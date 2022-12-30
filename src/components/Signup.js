@@ -25,12 +25,12 @@ function Signup () {
             setPwValid(false)
         }
     }
-    const login = () => {
+    const clickSignUp = () => {
         axios.post('http://localhost:8080/users/create', {
             email: email,
             password: pw
         }).then((res) => {
-            localStorage.setItem('token', res.data.token)
+            alert('회원가입이 완료되었습니다.')
         }).catch((error) => {
             alert(error.response.data.details)
         })
@@ -41,7 +41,7 @@ function Signup () {
             <h1>회원가입</h1>
             <div>이메일 <input type="text" onInput={inputEmail} placeholder="이메일을 입력해주세요."/></div>
             <div>비밀번호 <input type="text" onInput={inputPw} placeholder="비밀번호를 8자 이상 입력해주세요."/></div>
-            <button disabled={!(emailValid && pwValid)} onClick={login}>회원가입</button>
+            <button disabled={!(emailValid && pwValid)} onClick={clickSignUp}>회원가입</button>
         </div>
     )
 }
