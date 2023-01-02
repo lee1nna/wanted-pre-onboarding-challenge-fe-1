@@ -26,7 +26,16 @@ function Modal(props) {
                     "Authorization": localStorage.getItem('token')
                 }
             }).then((res) => {
-                console.log(res)
+                axios.get('http://localhost:8080/todos',
+                    {
+                        headers: {
+                            "Authorization": localStorage.getItem('token')
+                        }
+                    }).then((res) => {
+                        props.setTodoList(res.data.data)
+                        props.setModal(false)
+                }
+                )
             })
         }
     }

@@ -13,7 +13,7 @@ function TodoMain () {
         }).then((res) => {
             setTodoList(res.data.data)
         })
-    }, [todoList])
+    }, [])
 
 
 
@@ -29,7 +29,7 @@ function TodoMain () {
 
     return (
         <div>
-            {onAddModal? <Modal type='add' setModal={setOnAddModal}></Modal> : null}
+            {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
             <br/>
             <button onClick={() => {setOnAddModal(true)}}>추가하기</button>
             <button onClick={udtTodoList}>수정하기</button>
