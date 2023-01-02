@@ -3,6 +3,8 @@ import axios from "axios";
 import Modal from "./Modal";
 
 function TodoMain () {
+    const [todoList, setTodoList] = useState([])
+
     useEffect(() => {
         axios.get('http://localhost:8080/todos',{
             headers: {
@@ -13,7 +15,6 @@ function TodoMain () {
         })
     }, [todoList])
 
-    const [todoList, setTodoList] = useState([])
 
 
     const [onAddModal, setOnAddModal] = useState(false)
