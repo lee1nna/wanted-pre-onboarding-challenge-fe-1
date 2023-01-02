@@ -1,0 +1,31 @@
+.modal__wrap {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal__body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: auto;
+    padding: 20px;
+    border-radius: 8px;
+    top: 50%;
+    left: calc(50% - 150px);
+    background-color: #FFFFFF;
+}
+
+.modal__body__title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.modal__bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
