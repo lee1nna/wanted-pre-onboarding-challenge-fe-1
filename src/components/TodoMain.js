@@ -18,9 +18,12 @@ function TodoMain () {
 
 
     const [onAddModal, setOnAddModal] = useState(false)
+    const [onModifyModal, setOnModifyModal] = useState(false)
+    const [clickedTodo, setClickedTodo] = useState(null)
 
-    const udtTodoList = () => {
-
+    const udtTodoList = (todo) => {
+        setOnModifyModal(true)
+        setClickedTodo(todo)
     }
 
     const delTodoList = () => {
@@ -30,17 +33,17 @@ function TodoMain () {
     return (
         <div>
             {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
+            {onModifyModal? <Modal type='modify' setModal={setOnModifyModal} setTodoList={setTodoList} clickedTodo={clickedTodo}></Modal> : null}
             <br/>
             <button onClick={() => {setOnAddModal(true)}}>추가하기</button>
-            <button onClick={udtTodoList}>수정하기</button>
-            <button onClick={delTodoList}>삭제하기</button>
-            <br/>
             <br/>
             {
                 todoList.map((todo) => {
                     return (
                         <div>
                             {todo.title}
+                            <button onClick={() => {udtTodoList(todo)}}>수정하기</button>
+                            <button onClick={delTodoList}>삭제하기</button>
                         </div>
                     )
                 })
