@@ -26,8 +26,23 @@ function TodoMain () {
         setClickedTodo(todo)
     }
 
-    const delTodoList = () => {
-
+    const delTodoList = (id) => {
+        axios.delete(`http://localhost:8080/todos/${id}`, {
+            headers: {
+                "Authorization": localStorage.getItem('token')
+            }
+        }).then(() => {
+            alert('삭제가 완료되었습니다.')
+            axios.get('http://localhost:8080/todos',
+                {
+                    headers: {
+                        "Authorization": localStorage.getItem('token')
+                    }
+                }).then((res) => {
+                    setTodoList(res.data.data)
+                }
+            )
+        })
     }
 
     return (
@@ -43,7 +58,7 @@ function TodoMain () {
                         <div>
                             {todo.title}
                             <button onClick={() => {udtTodoList(todo)}}>수정하기</button>
-                            <button onClick={delTodoList}>삭제하기</button>
+                            <button onClick={() => {delTodoList(todo.id)}}>삭제하기</button>
                         </div>
                     )
                 })
