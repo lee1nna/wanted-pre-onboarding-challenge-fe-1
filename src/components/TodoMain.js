@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Modal from "./Modal";
+import TodoDetail from "./TodoDetail";
 
 function TodoMain () {
     const [todoList, setTodoList] = useState([])
@@ -15,11 +16,13 @@ function TodoMain () {
         })
     }, [])
 
-
-
     const [onAddModal, setOnAddModal] = useState(false)
     const [onModifyModal, setOnModifyModal] = useState(false)
     const [clickedTodo, setClickedTodo] = useState(null)
+    const [showDetailTodo, setShowDetailTodo] = useState({
+        isShow: false,
+        todo: {}
+    })
 
     const udtTodoList = (todo) => {
         setOnModifyModal(true)
@@ -55,14 +58,16 @@ function TodoMain () {
             {
                 todoList.map((todo) => {
                     return (
-                        <div>
+                        <div onClick={() => {setShowDetailTodo({isShow:true, todo:todo})}}>
                             {todo.title}
                             <button onClick={() => {udtTodoList(todo)}}>수정하기</button>
                             <button onClick={() => {delTodoList(todo.id)}}>삭제하기</button>
                         </div>
-                    )
+                )
                 })
             }
+
+            {showDetailTodo.isShow ? <TodoDetail todo={showDetailTodo}></TodoDetail> : null}
         </div>
     )
 }
