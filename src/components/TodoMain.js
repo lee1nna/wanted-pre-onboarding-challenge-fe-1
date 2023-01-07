@@ -2,9 +2,11 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import Modal from "./Modal";
 import TodoDetail from "./TodoDetail";
+import {useNavigate} from 'react-router'
 
 function TodoMain () {
     const [todoList, setTodoList] = useState([])
+    const navigator = useNavigate()
 
     useEffect(() => {
         axios.get('http://localhost:8080/todos',{
@@ -48,12 +50,18 @@ function TodoMain () {
         })
     }
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        navigator('/auth')
+    }
+
     return (
         <div>
             {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
             {onModifyModal? <Modal type='modify' setModal={setOnModifyModal} setTodoList={setTodoList} clickedTodo={clickedTodo}></Modal> : null}
             <br/>
             <button onClick={() => {setOnAddModal(true)}}>추가하기</button>
+            <button onClick={logout}>로그아웃</button>
             <br/>
             {
                 todoList.map((todo) => {
@@ -66,8 +74,10 @@ function TodoMain () {
                 )
                 })
             }
-
-            {showDetailTodo.isShow ? <TodoDetail todo={showDetailTodo}></TodoDetail> : null}
+            {
+                showDetailTodo.isShow?
+                    <TodoDetail></TodoDetail> : null
+            }
         </div>
     )
 }
