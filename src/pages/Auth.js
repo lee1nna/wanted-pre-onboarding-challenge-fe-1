@@ -1,17 +1,15 @@
 import {useState} from "react";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
+import auth from './auth.css'
 
 function Auth() {
-    const [login, setLogin] = useState(false)
+    const [login, setLogin] = useState(true)
 
     return (
-        <div>
-            {login? null : <Signup></Signup>}
-            {login? <Login></Login> : null}
-
-            {login? <button onClick={() => {setLogin(false)}}>회원가입 하러가기</button>
-                : <button onClick={() => {setLogin(true)}}>로그인 하러가기</button>}
+        <div className="auth__wrap">
+            {login? null : <Signup setLogin={setLogin}></Signup>}
+            {login? <Login setLogin={setLogin}></Login> : null}
         </div>
     )
 }

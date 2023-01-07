@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useNavigate} from 'react-router'
 import axios from "axios";
 
-function Login () {
+function Login (props) {
     const navigate = useNavigate()
     const [email, setEmail] = useState()
     const [pw, setPw] = useState()
@@ -32,12 +32,19 @@ function Login () {
         }
     }
 
+    const clickSignUp = () => {
+        props.setLogin(false)
+    }
+
     return (
-        <div>
-            <h1>로그인</h1>
-            <div>이메일 <input onInput={inputEmail} type="text"/></div>
-            <div>비밀번호 <input onInput={inputPw} type="text"/></div>
-            <button onClick={clickLogin}>로그인</button>
+        <div className="login__wrap">
+            <h1 className="login__title">로그인</h1>
+            <div className="login__email">이메일 <input onInput={inputEmail} type="text"/></div>
+            <div className="login__pw">비밀번호 <input onInput={inputPw} type="password"/></div>
+            <div className="login__btn">
+                <button onClick={clickLogin}>로그인</button>
+                <button onClick={clickSignUp}>회원가입</button>
+            </div>
         </div>
     )
 }

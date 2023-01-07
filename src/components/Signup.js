@@ -1,7 +1,7 @@
 import {useState} from "react";
 import axios from "axios";
 
-function Signup () {
+function Signup (props) {
     const [email, setEmail] = useState('')
     const [pw, setPw] = useState('')
     const [emailValid, setEmailValid] = useState(false)
@@ -36,12 +36,17 @@ function Signup () {
         })
     }
 
+    const clickLogin = () => {
+        props.setLogin(true)
+    }
+
     return (
         <div>
             <h1>회원가입</h1>
             <div>이메일 <input type="text" onInput={inputEmail} placeholder="이메일을 입력해주세요."/></div>
             <div>비밀번호 <input type="text" onInput={inputPw} placeholder="비밀번호를 8자 이상 입력해주세요."/></div>
             <button disabled={!(emailValid && pwValid)} onClick={clickSignUp}>회원가입</button>
+            <button onClick={clickLogin}>로그인</button>
         </div>
     )
 }
