@@ -39,8 +39,10 @@ function Login (props) {
     return (
         <div className="login__wrap">
             <h1 className="login__title">로그인</h1>
-            <div className="login__email">이메일 <input onInput={inputEmail} type="text"/></div>
-            <div className="login__pw">비밀번호 <input onInput={inputPw} type="password"/></div>
+            <div className="login__email">이메일</div>
+            <input className="login__email__input" onInput={inputEmail} type="text"/>
+            <div className="login__pw">비밀번호</div>
+            <input className="login__pw__input" onInput={inputPw} type="password"/>
             <div className="login__btn">
                 <button onClick={clickLogin}>로그인</button>
                 <button onClick={clickSignUp}>회원가입</button>

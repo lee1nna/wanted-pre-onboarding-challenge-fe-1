@@ -41,12 +41,16 @@ function Signup (props) {
     }
 
     return (
-        <div>
-            <h1>회원가입</h1>
-            <div>이메일 <input type="text" onInput={inputEmail} placeholder="이메일을 입력해주세요."/></div>
-            <div>비밀번호 <input type="text" onInput={inputPw} placeholder="비밀번호를 8자 이상 입력해주세요."/></div>
-            <button disabled={!(emailValid && pwValid)} onClick={clickSignUp}>회원가입</button>
-            <button onClick={clickLogin}>로그인</button>
+        <div className="sign-up__wrap">
+            <h1 className="sign-up__title">회원가입</h1>
+            <div className="sign-up__email">이메일</div>
+            <input className="sign-up__email__input" type="text" onInput={inputEmail} placeholder="이메일을 입력해주세요."/>
+            <div className="sign-up__pw">비밀번호</div>
+            <input className="sign-up__pw__input" type="password" onInput={inputPw} placeholder="비밀번호를 8자 이상 입력해주세요."/>
+            <div className="sign-up__btn">
+                <button disabled={!(emailValid && pwValid)} onClick={clickSignUp}>회원가입</button>
+                <button onClick={clickLogin}>로그인</button>
+            </div>
         </div>
     )
 }

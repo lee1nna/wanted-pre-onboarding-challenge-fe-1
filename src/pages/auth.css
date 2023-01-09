@@ -9,7 +9,7 @@
 }
 
 /*로그인 컴포넌트*/
-.login__wrap {
+.login__wrap, .sign-up__wrap {
     border: 1px solid #e6e9ed;
     width: 400px;
     border-radius: 8px;
@@ -17,34 +17,30 @@
     background-color: #FFFFFF;
 }
 
-.login__title {
+.login__title, .sign-up__title {
     text-align: center;
 }
 
-.login__email, .login__pw {
+.login__email, .login__pw, .sign-up__email, .sign-up__pw {
     display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 10px 0;
     font-size: 20px;
 }
 
-.login__email > input, .login__pw > input {
-    margin-left: 8px;
-    border-radius: 4px;
-    width: 280px;
-    border: 1px solid #666;
-    height: 30px;
+.login__email__input, .login__pw__input, .sign-up__pw__input, .sign-up__email__input {
+    width: calc(100% - 25px);
+    height: 40px;
+    font-size: 20px;
     padding: 0 10px;
 }
 
-.login__btn {
+.login__btn, .sign-up__btn {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
-.login__btn > button {
+.login__btn > button, .sign-up__btn > button {
     border-radius: 4px;
     color: #FFFFFF;
     border: 1px solid #FFF;
@@ -52,11 +48,20 @@
     background-color: #37d49f;
     font-size: 16px;
     width: 100px;
-    height: 40px;
+    height: 50px;
     margin-right: 8px;
     cursor: pointer;
 }
 
 .login__btn > button:hover {
     background-color: #269f76;
+}
+
+.sign-up__btn > button:hover {
+    background-color: #269f76;
+}
+
+.sign-up__btn > button:disabled {
+    background-color: #eeeeee;
+    cursor: default;
 }
