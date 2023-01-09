@@ -1,11 +1,17 @@
+import {useParams} from "react-router";
+import {useEffect} from "react";
+
 function TodoDetail(props) {
+    useEffect(() => {
+
+    },[])
     return (
         <div>
+            <h2>
+                {props.todo.title}
+            </h2>
             <div>
-                title: {props.todo.todo.title}
-            </div>
-            <div>
-                content: {props.todo.todo.content}
+                {props.todo.content}
             </div>
         </div>
     )

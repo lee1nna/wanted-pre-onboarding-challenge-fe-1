@@ -1,0 +1,82 @@
+.todo__wrap {
+    width: 100%;
+    height: 100vh;
+    background-color: #e6e9ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.todo__wrap > h1 {
+    margin: 0;
+}
+
+.todo__box {
+    display: flex;
+    margin-top: 20px;
+}
+
+.todo__list__wrap {
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    height: 400px;
+    width: 300px;
+    margin-right: 20px;
+}
+
+.detail__todo__wrap {
+    position: relative;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    height: 400px;
+    width: 300px;
+}
+
+.add__todo__btn {
+    height: 38px;
+    width: 300px;
+    border-radius: 80px;
+    border: 1px solid #FFFFFF;
+    background-color: #37d49f;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.todo__list__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.edit__btn, .delete__btn {
+    background-color: #FFFFFF;
+    border: 0;
+}
+
+.edit__btn > img, .delete__btn > img {
+    width: 20px;
+    height: 20px;
+}
+
+.logout__btn {
+    width: 100px;
+    position: absolute;
+    left: calc(100% - 120px);
+    border-radius: 80px;
+    border: 1px solid #FFFFFF;
+    background-color: #37d49f;
+    color: #FFFFFF;
+    font-weight: 800;
+    font-size: 15px;
+    height: 38px;
+}
+
+.detail__todo__list {
+    margin-top: 45px;
+}

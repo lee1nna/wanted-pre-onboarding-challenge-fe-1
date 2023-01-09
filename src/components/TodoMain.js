@@ -3,6 +3,9 @@ import axios from "axios";
 import Modal from "./Modal";
 import TodoDetail from "./TodoDetail";
 import {useNavigate} from 'react-router'
+import todo from './todo.css'
+import editIcon from '../assets/edit.png'
+import deleteIcon from '../assets/delete.png'
 
 function TodoMain () {
     const [todoList, setTodoList] = useState([])
@@ -56,28 +59,41 @@ function TodoMain () {
     }
 
     return (
-        <div>
-            {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
-            {onModifyModal? <Modal type='modify' setModal={setOnModifyModal} setTodoList={setTodoList} clickedTodo={clickedTodo}></Modal> : null}
-            <br/>
-            <button onClick={() => {setOnAddModal(true)}}>추가하기</button>
-            <button onClick={logout}>로그아웃</button>
-            <br/>
-            {
-                todoList.map((todo) => {
-                    return (
-                        <div onClick={() => {setShowDetailTodo({isShow:true, todo:todo})}}>
-                            {todo.title}
-                            <button onClick={() => {udtTodoList(todo)}}>수정하기</button>
-                            <button onClick={() => {delTodoList(todo.id)}}>삭제하기</button>
-                        </div>
-                )
-                })
-            }
-            {
-                showDetailTodo.isShow?
-                    <TodoDetail></TodoDetail> : null
-            }
+        <div className="todo__wrap">
+            <h1>Todo List</h1>
+            <div className="todo__box">
+                <div className="todo__list__wrap">
+                    {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
+                    {onModifyModal? <Modal type='modify' setModal={setOnModifyModal} setTodoList={setTodoList} clickedTodo={clickedTodo}></Modal> : null}
+                    <button className="add__todo__btn" onClick={() => {setOnAddModal(true)}}> + 추가하기</button>
+                    {
+                        todoList.map((todo) => {
+                            return (
+                                <div className="todo__list__title" onClick={() => {setShowDetailTodo({isShow:true, todo:todo})}}>
+                                    {todo.title}
+                                    <div>
+                                        <button className="edit__btn" onClick={() => {udtTodoList(todo)}}>
+                                            <img src={editIcon} alt=""/>
+                                        </button>
+                                        <button className="delete__btn"  onClick={() => {delTodoList(todo.id)}}>
+                                            <img src={deleteIcon} alt=""/>
+                                        </button>
+                                    </div>
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className="detail__todo__wrap">
+                    <button className="logout__btn" onClick={logout}>로그아웃</button>
+                    <div className="detail__todo__list">
+                        {
+                            showDetailTodo.isShow?
+                                <TodoDetail todo={showDetailTodo.todo}></TodoDetail> : null
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }
