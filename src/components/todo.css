@@ -44,6 +44,11 @@
     color: #FFFFFF;
     font-weight: 800;
     font-size: 15px;
+    cursor: pointer;
+}
+
+.add__todo__btn:hover {
+    background-color: #269f76;
 }
 
 .todo__list__title {
@@ -62,6 +67,7 @@
 .edit__btn > img, .delete__btn > img {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 
 .logout__btn {
@@ -75,6 +81,11 @@
     font-weight: 800;
     font-size: 15px;
     height: 38px;
+    cursor: pointer;
+}
+
+.logout__btn:hover {
+    background-color: #269f76;
 }
 
 .detail__todo__list {

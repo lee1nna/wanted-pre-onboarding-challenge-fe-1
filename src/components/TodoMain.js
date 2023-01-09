@@ -60,7 +60,7 @@ function TodoMain () {
 
     return (
         <div className="todo__wrap">
-            <h1>Todo List</h1>
+            <h1>TODO LIST</h1>
             <div className="todo__box">
                 <div className="todo__list__wrap">
                     {onAddModal? <Modal type='add' setModal={setOnAddModal} setTodoList={setTodoList}></Modal> : null}
