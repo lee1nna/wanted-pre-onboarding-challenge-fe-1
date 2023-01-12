@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router'
 import todo from './todo.css'
 import editIcon from '../assets/edit.png'
 import deleteIcon from '../assets/delete.png'
+import {Link} from "react-router-dom";
 
 function TodoMain () {
     const [todoList, setTodoList] = useState([])
@@ -69,6 +70,7 @@ function TodoMain () {
                     {
                         todoList.map((todo) => {
                             return (
+                                <Link to={`/`+todo.id}>
                                 <div className="todo__list__title" onClick={() => {setShowDetailTodo({isShow:true, todo:todo})}}>
                                     {todo.title}
                                     <div>
@@ -80,19 +82,20 @@ function TodoMain () {
                                         </button>
                                     </div>
                                 </div>
+                                </Link>
                             )
                         })
                     }
                 </div>
-                <div className="detail__todo__wrap">
-                    <button className="logout__btn" onClick={logout}>로그아웃</button>
-                    <div className="detail__todo__list">
-                        {
-                            showDetailTodo.isShow?
-                                <TodoDetail todo={showDetailTodo.todo}></TodoDetail> : null
-                        }
+                    <div className="detail__todo__wrap">
+                        <button className="logout__btn" onClick={logout}>로그아웃</button>
+                        <div className="detail__todo__list">
+                            {
+                                showDetailTodo.isShow?
+                                    <TodoDetail todo={showDetailTodo.todo}></TodoDetail> : null
+                            }
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     )
