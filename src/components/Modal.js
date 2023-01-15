@@ -72,11 +72,12 @@ function Modal(props) {
         <div className="modal__wrap">
             <div className="modal__body">
                 <div className="modal__body__title">
-                    {props.type === 'add'? 'TodoList 추가' : 'TodoList 수정'}
+                    {props.type === 'add'? '새로운 할 일 추가하기' : '할 일 수정하기'}
                 </div>
-                <div>제목 <input defaultValue={props.clickedTodo? props.clickedTodo.title : null} type="text" onInput={inputTodoTitle}/>
-                </div>
-                <div>내용 <textarea defaultValue={props.clickedTodo? props.clickedTodo.content : null} type="text" onInput={inputTodoContent}/></div>
+                <div className="modal__sub-title">제목</div>
+                <input className="modal__sub-title__input" defaultValue={props.clickedTodo? props.clickedTodo.title : null} type="text" onInput={inputTodoTitle}/>
+                <div className="modal__content">내용</div>
+                <textarea className="modal__content__input" defaultValue={props.clickedTodo? props.clickedTodo.content : null} type="text" onInput={inputTodoContent}/>
                 <div className="modal__bottom">
                     {props.type === 'add'? <button onClick={addTodoList}>추가하기</button>
                         : <button onClick={() => {modifyTodoList(props.clickedTodo.id)}}>수정하기</button>}
