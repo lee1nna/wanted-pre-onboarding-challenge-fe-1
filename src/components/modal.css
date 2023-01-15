@@ -39,11 +39,48 @@
 }
 
 .modal__sub-title__input {
+    font-size: 18px;
     margin-top: 5px;
     height: 28px;
 }
 
 .modal__content__input {
+    font-size: 18px;
     margin-top: 5px;
     height: 300px;
+    resize: none;
+}
+
+.modal__modify__btn, .modal__add__btn {
+    color: #FFFFFF;
+    height: 37px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 80px;
+    border: 1px solid #FFFFFF;
+    background-color: #37d49f;
+}
+
+.modal__modify__btn:hover, .modal__add__btn:hover {
+    background-color: #269f76;
+    cursor: pointer;
+}
+
+.modal__close__btn {
+    background-color: #e6e9ed;
+    color: #FFFFFF;
+    height: 37px;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 80px;
+    border: 1px solid #FFFFFF;
+}
+
+.modal__close__btn:hover{
+    background-color: #b8b9be;
+    cursor: pointer;
 }

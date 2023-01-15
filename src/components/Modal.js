@@ -79,9 +79,9 @@ function Modal(props) {
                 <div className="modal__content">내용</div>
                 <textarea className="modal__content__input" defaultValue={props.clickedTodo? props.clickedTodo.content : null} type="text" onInput={inputTodoContent}/>
                 <div className="modal__bottom">
-                    {props.type === 'add'? <button onClick={addTodoList}>추가하기</button>
-                        : <button onClick={() => {modifyTodoList(props.clickedTodo.id)}}>수정하기</button>}
-                    <button onClick={() => {props.setModal(false)}}>닫기</button>
+                    {props.type === 'add'? <button className="modal__add__btn" onClick={addTodoList}>추가하기</button>
+                        : <button className="modal__modify__btn" onClick={() => {modifyTodoList(props.clickedTodo.id)}}>수정하기</button>}
+                    <button className="modal__close__btn" onClick={() => {props.setModal(false)}}>닫기</button>
                 </div>
             </div>
         </div>
