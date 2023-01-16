@@ -1,5 +1,6 @@
 import {useState} from "react";
 import axios from "axios";
+import {customAxios} from "../modules/customAxios";
 
 function Signup (props) {
     const [email, setEmail] = useState('')
@@ -26,7 +27,7 @@ function Signup (props) {
         }
     }
     const clickSignUp = () => {
-        axios.post('http://localhost:8080/users/create', {
+        customAxios.post('/users/create', {
             email: email,
             password: pw
         }).then((res) => {

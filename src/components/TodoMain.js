@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import axios from "axios";
 import Modal from "./Modal";
 import TodoDetail from "./TodoDetail";
 import {useNavigate} from 'react-router'
@@ -7,17 +6,14 @@ import todo from './todo.css'
 import editIcon from '../assets/edit.png'
 import deleteIcon from '../assets/delete.png'
 import {Link} from "react-router-dom";
+import {customAxios} from "../modules/customAxios";
 
 function TodoMain () {
     const [todoList, setTodoList] = useState([])
     const navigator = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:8080/todos',{
-            headers: {
-                "Authorization": localStorage.getItem('token')
-            }
-        }).then((res) => {
+        customAxios.get('/todos').then((res) => {
             setTodoList(res.data.data)
         })
     }, [])
@@ -36,18 +32,9 @@ function TodoMain () {
     }
 
     const delTodoList = (id) => {
-        axios.delete(`http://localhost:8080/todos/${id}`, {
-            headers: {
-                "Authorization": localStorage.getItem('token')
-            }
-        }).then(() => {
+        customAxios.delete(`/todos/${id}`).then(() => {
             alert('삭제가 완료되었습니다.')
-            axios.get('http://localhost:8080/todos',
-                {
-                    headers: {
-                        "Authorization": localStorage.getItem('token')
-                    }
-                }).then((res) => {
+            customAxios.get('/todos').then((res) => {
                     setTodoList(res.data.data)
                 }
             )

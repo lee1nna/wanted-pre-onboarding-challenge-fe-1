@@ -1,6 +1,7 @@
 import modal from './modal.css'
 import axios from "axios";
 import {useEffect, useState} from "react";
+import {customAxios} from "../modules/customAxios";
 
 function Modal(props) {
     useEffect(() => {
@@ -25,20 +26,11 @@ function Modal(props) {
         if(todoTitle.length === 0 || todoContent.length === 0) {
             alert('할일의 제목이나 내용을 입력해주세요.')
         } else {
-            axios.post('http://localhost:8080/todos',{
+            customAxios.post('/todos',{
                 title: todoTitle,
                 content: todoContent
-            } ,{
-                headers: {
-                    "Authorization": localStorage.getItem('token')
-                }
             }).then((res) => {
-                axios.get('http://localhost:8080/todos',
-                    {
-                        headers: {
-                            "Authorization": localStorage.getItem('token')
-                        }
-                    }).then((res) => {
+                customAxios.get('/todos').then((res) => {
                         props.setTodoList(res.data.data)
                         props.setModal(false)
                 }
@@ -48,19 +40,11 @@ function Modal(props) {
     }
 
     const modifyTodoList = (id, title, content) => {
-        axios.put(`http://localhost:8080/todos/${id}`, {
+        customAxios.put(`/todos/${id}`, {
             title: todoTitle,
             content: todoContent
-        },{
-            headers: {
-                "Authorization": localStorage.getItem('token')
-            }}).then((res) => {
-            axios.get('http://localhost:8080/todos',
-                {
-                    headers: {
-                        "Authorization": localStorage.getItem('token')
-                    }
-                }).then((res) => {
+        }).then((res) => {
+            customAxios.get('/todos').then((res) => {
                     props.setTodoList(res.data.data)
                     props.setModal(false)
                 }

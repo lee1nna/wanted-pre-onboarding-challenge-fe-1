@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {useNavigate} from 'react-router'
 import axios from "axios";
+import {customAxios} from "../modules/customAxios";
 
 function Login (props) {
     const navigate = useNavigate()
@@ -19,7 +20,7 @@ function Login (props) {
         if(localStorage.getItem('token')) {
             navigate('/')
         } else {
-            axios.post('http://localhost:8080/users/login', {
+            customAxios.post('/users/login', {
                 email: email,
                 password: pw
             }).then((res) => {
